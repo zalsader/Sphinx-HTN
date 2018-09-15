@@ -1,0 +1,29 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+    height: 100vh;
+    background-color: rgb(71, 194, 88);
+  }  
+
+.content {
+    margin: 60px;
+}
+
+body {
+margin: 0;
+background-image: url("../images/sphinx-htn-tiles.png");
+background-repeat: repeat-xy;
+background-size: 250px;
+}
+
+.topTextSemiBold {
+    font-size: 50px;
+    font-family: "San Francisco";
+    font-weight: 400;
+    line-height: 70px;
+    color: white
+}
+
+#topTextSecondLine {
+    margin-top: -20px;
+}
