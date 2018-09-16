@@ -5,7 +5,7 @@ function getChallengeTemplate() {
           </div>
           
           <div class="bottomContent">
-            <button class="btnBottom"><span id="btnBottomText">Submit Answer</span></button>
+            <button class="btnBottom" id="submit-button"><span id="btnBottomText">Submit Answer</span></button>
           </div>
           `
 }
@@ -15,10 +15,10 @@ function getVictoryTemplate() {
             <h1 class="topTextBold text-center">VICTORY</h1>
           </div>
 
-        <div class="bottomContent">
-          <button class="btnBottom"><span id="btnBottomText">OH YEAHHHHH</span></button>
-        </div>
-        `
+          <div class="bottomContent">
+            <button class="btnBottom"><span id="btnBottomText">OH YEAHHHHH</span></button>
+          </div>
+         `
 }
 
 function swapInChallenge() {
@@ -32,6 +32,10 @@ function swapInVictory() {
   container.innerHTML = getVictoryTemplate();
 }
 
-swapInChallenge();
-setTimeout(swapInVictory, 10000);
+function indicateError() {
+  const buttonText = document.getElementById("btnBottomText");
+  const tmp = buttonText.innerText;
 
+  buttonText.innerText = `Wrong !`;
+  setTimeout(() => buttonText.innerText = tmp, 2000)
+}
