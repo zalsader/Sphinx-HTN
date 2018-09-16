@@ -8,7 +8,7 @@ contract Game {
     event LogSubmit(address sender, address to, uint amount);
 
     constructor() public {
-        entryFee = 1 ether; // const?
+        entryFee = 20 finney; // const?
     }
 
     function registerPlayer() public payable {
@@ -34,15 +34,16 @@ contract Game {
        return keccak256(a) == keccak256(b);
    }
 
-    function submit(string answer) public returns (bool){
+   function checkAnswer(string answer) public view returns (bool) {
+     return compareStrings(answer, correctAnswer);
+   }
+
+    function submit(string answer) public {
       // use require?
       uint award = getAward();
-      if(!compareStrings(answer, correctAnswer)) {
-        return false;
-      }
+      require(compareStrings(answer, correctAnswer));
       msg.sender.transfer(award);
       LogSubmit(address(this), msg.sender, award);
-      return true;
     }
 
 }
