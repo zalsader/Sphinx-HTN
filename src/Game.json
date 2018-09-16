@@ -3475,6 +3475,12 @@
       "links": {},
       "address": "0x5ae601c8bca67d396ca7435848697f59689e3887",
       "transactionHash": "0x3b233abd6d1f370294690192a5ea884fd2c713294b0655578d00f3bc08626a15"
+    },
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0xbd30015f7281dc5e739edd85b67fced95019b39f",
+      "transactionHash": "0x54f3840353b7be9ee71a6d00e53a6797d9eefffc10bcd4bcfe7ffcdb3abffad6"
     }
   },
   "schemaVersion": "2.0.1",
