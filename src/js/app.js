@@ -35,6 +35,7 @@ App = {
 
   bindEvents: function() {
     $(document).on('click', '.btn-register', App.handleRegister);
+    $(document).on('click', '#btnSubmit', App.submit);
   },
 
   getAward: function() {
@@ -84,12 +85,13 @@ App = {
         gameInstance = instance;
 
         // Execute adopt as a transaction by sending account
-        return App.getEntryFee().then(function(entryFee){
+        return App.getEntryFee()
+        
+      }).then(function(entryFee){
           console.log(entryFee);
           return gameInstance.registerPlayer({from: account, gas: 50000, value: entryFee});
-        });
       }).then(function(result) {
-        // Check every pet to reflect the new adoption.
+        swapInChallenge()
         console.log(result);
       }).catch(function(err) {
         console.log(err.message);
@@ -105,7 +107,11 @@ App = {
       // Call the function that will retrieve the adopters for us.
       return gameInstance.submit(answer);
     }).then(function(result) {
-      console.log(result);
+      if (result) {
+        swapInVictory()
+      } else {
+        indicateError()
+      }
     }).catch(function(err) {
       console.log(err.message);
     });
