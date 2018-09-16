@@ -30,6 +30,11 @@ App = {
       App.contracts.Game.setProvider(App.web3Provider);
       App.getAward();
     });
+    return App.bindEvents();
+  },
+
+  bindEvents: function() {
+    $(document).on('click', '.btn-register', App.handleRegister);
   },
 
   getAward: function() {
@@ -60,8 +65,8 @@ App = {
     });
   },
 
-  registerPlayer: function(event) {
-    //event.preventDefault();
+  handleRegister: function(event) {
+    if (typeof event !== "undefined") event.preventDefault();
     var gameInstance;
 
     // Retrieve the active account (the adopter's address) for the web3 instance.
@@ -92,7 +97,7 @@ App = {
   },
 
   submit: function(answer){
-    
+
   }
 
 };

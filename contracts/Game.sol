@@ -14,7 +14,9 @@ contract Game {
     }
 
     function registerPlayer() public payable {
-        // require the user to send you cash to add to the pot
+        // require the user to send you cash to add to the
+        // check if player has already been registered ?
+
         require(msg.value == entryFee);
         award += msg.value;
         // save sender maybe?
