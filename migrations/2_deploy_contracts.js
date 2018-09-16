@@ -1,5 +1,5 @@
-var Adoption = artifacts.require("Adoption")
+var Game = artifacts.require("Game")
 
 module.exports = function(deployer) {
-    deployer.deploy(Adoption)
+    deployer.deploy(Game)
 }
