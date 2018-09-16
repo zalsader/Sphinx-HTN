@@ -2,10 +2,10 @@ pragma solidity ^0.4.17;
 
 contract Game {
     address owner;
-    address player;
 
     uint public award;
     uint public entryFee;
+    string correctAnswer = "42";
 
     constructor() public {
         owner = msg.sender;
@@ -14,10 +14,12 @@ contract Game {
     }
 
     function registerPlayer() public payable {
-        // require the user to send you cash to add to the pot
+        // require the user to send you cash to add to the
+        // check if player has already been registered ?
+
         require(msg.value == entryFee);
         award += msg.value;
-        player = msg.sender;
+        // save sender maybe?
     }
 
     function getAward() public view returns (uint) {
@@ -28,11 +30,18 @@ contract Game {
         return entryFee;
     }
 
-    // awardPot(address winner) -> returns true // false
-    // problem that it is public, work out authorization
-    function awardPot() public {
-        // require(msg.sender == owner);
-        player.transfer(award);
+    function compareStrings (string a, string b) internal returns (bool){
+       return keccak256(a) == keccak256(b);
+   }
+
+    function submit(string answer) public returns (bool){
+        if (compareStrings(answer, correctAnswer)) {
+          return false;
+        }
+        msg.sender.transfer(award);
+        // reset reward
+        award = 10 ether;
+        return true;
     }
 
 }
