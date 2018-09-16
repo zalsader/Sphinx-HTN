@@ -46,7 +46,7 @@ App = {
       // Call the function that will retrieve the adopters for us.
       return gameInstance.getAward.call();
     }).then(function(award) {
-      console.log(award);
+      $("#textEther").text(award.c[0]/10000)
     }).catch(function(err) {
       console.log(err.message);
     });
