@@ -17,8 +17,8 @@ function getVictoryTemplate() {
                   <img src="images/ether.png" class="imgEther"> <span class="topTextBold" id="textAmountWon"> <span class="amount-won">0</span> Ethereum </span> <img src="images/ether.png" class="imgEther">
               </div>
           </div>
-          <div class="bottomContent">
-              <button class="btnBottom"><span id="btnBottomText">Home</span></button>
+          <div class="bottomContent" id="victory-bottom-content">
+              <button class="btnBottom" id="btnHome"><span id="btnBottomText">Home</span></button>
           </div>
          `
 }

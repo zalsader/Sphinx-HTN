@@ -77,6 +77,11 @@ background-size: 250px;
     box-shadow: inset 0.2px 0.2px 1px rgba(100, 100, 100, 0.3);
 }
 
+#victory-bottom-content {
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
 #btnBottomText {
     font-size: 3em;
     font-weight: bold;

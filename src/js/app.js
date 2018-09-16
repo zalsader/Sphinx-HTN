@@ -33,11 +33,18 @@ App = {
     return App.bindEvents();
   },
 
+
   bindEvents: function() {
     $(document).on('click', '.btn-register', App.handleRegister);
     $(document).on('click', '#btnSubmit', App.submit);
+    $(document).on('click', '#btnHome', App.getHome);
   },
 
+  getHome: function(event) {
+    if (typeof event !== "undefined") event.preventDefault();
+    swapInHome()
+  },
+  
   getAward: function() {
     var gameInstance;
 
