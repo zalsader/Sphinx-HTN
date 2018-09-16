@@ -44,7 +44,7 @@ App = {
     if (typeof event !== "undefined") event.preventDefault();
     swapInHome()
   },
-  
+
   getAward: function() {
     var gameInstance;
 
@@ -138,5 +138,7 @@ App = {
 $(function() {
   $(window).load(function() {
     App.init();
+
+    setInterval(App.getAward, 1000);
   });
 });
