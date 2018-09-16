@@ -45,6 +45,50 @@ App = {
     }).catch(function(err) {
       console.log(err.message);
     });
+  },
+
+  getEntryFee: function() {
+    var adoptionInstance;
+
+    // Once the contract instance is deployed...
+    return App.contracts.Game.deployed().then(function(instance) {
+      gameInstance = instance;
+      // Call the function that will retrieve the adopters for us.
+      return gameInstance.getEntryFee.call();
+    }).catch(function(err) {
+      console.log(err.message);
+    });
+  },
+
+  registerPlayer: function(event) {
+    //event.preventDefault();
+    var gameInstance;
+
+    // Retrieve the active account (the adopter's address) for the web3 instance.
+    web3.eth.getAccounts(function(error, accounts) {
+      if (error) {
+        console.log(error);
+      }
+
+      // Select the first element because `accounts` returns as an array.
+      var account = accounts[0];
+
+      // Retrieve the deployed contract instance...
+      App.contracts.Game.deployed().then(function(instance) {
+        gameInstance = instance;
+
+        // Execute adopt as a transaction by sending account
+        return App.getEntryFee().then(function(entryFee){
+          console.log(entryFee);
+          return gameInstance.registerPlayer({from: account, gas: 50000, value: entryFee});
+        });
+      }).then(function(result) {
+        // Check every pet to reflect the new adoption.
+        console.log(result);
+      }).catch(function(err) {
+        console.log(err.message);
+      });
+    });
   }
 
 };
