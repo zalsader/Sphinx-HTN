@@ -8,7 +8,7 @@ contract Game {
     event LogSubmit(address sender, address to, uint amount);
 
     constructor() public {
-        entryFee = 10 finney; // const?
+        entryFee = 20 finney; // const?
     }
 
     function registerPlayer() public payable {

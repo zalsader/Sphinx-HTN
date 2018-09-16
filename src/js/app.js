@@ -86,7 +86,7 @@ App = {
 
         // Execute adopt as a transaction by sending account
         return App.getEntryFee()
-        
+
       }).then(function(entryFee){
           console.log(entryFee);
           return gameInstance.registerPlayer({from: account, gas: 50000, value: entryFee});
@@ -99,8 +99,11 @@ App = {
     });
   },
 
-  submit: function(answer){
+  submit: function(event){
+    if (typeof event !== "undefined") event.preventDefault();
+
     var gameInstance;
+    var answer = $('.textfieldAnswer').val();
 
     App.contracts.Game.deployed().then(function(instance) {
       gameInstance = instance;
