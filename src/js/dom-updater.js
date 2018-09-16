@@ -5,7 +5,7 @@ function getChallengeTemplate() {
               <input class='textfieldAnswer' type='text' placeholder="Your answer">
           </div>
           <div class="bottomContent">
-                  <button class="btnBottom"><span id="btnBottomText">Submit</span></button>
+                  <button class="btnBottom" id="btnSubmit"><span id="btnBottomText">Submit</span></button>
           </div>
           `
 }
