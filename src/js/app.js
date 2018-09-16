@@ -35,10 +35,11 @@ App = {
 
   bindEvents: function() {
     $(document).on('click', '.btn-register', App.handleRegister);
+    $(document).on('click', '#btnSubmit', App.submit);
   },
 
   getAward: function() {
-    var adoptionInstance;
+    var gameInstance;
 
     // Once the contract instance is deployed...
     App.contracts.Game.deployed().then(function(instance) {
@@ -46,6 +47,7 @@ App = {
       // Call the function that will retrieve the adopters for us.
       return gameInstance.getAward.call();
     }).then(function(award) {
+      console.log(award);
       $("#textEther").text(award.c[0]/10000)
     }).catch(function(err) {
       console.log(err.message);
@@ -53,7 +55,7 @@ App = {
   },
 
   getEntryFee: function() {
-    var adoptionInstance;
+    var gameInstance;
 
     // Once the contract instance is deployed...
     return App.contracts.Game.deployed().then(function(instance) {
@@ -83,12 +85,13 @@ App = {
         gameInstance = instance;
 
         // Execute adopt as a transaction by sending account
-        return App.getEntryFee().then(function(entryFee){
+        return App.getEntryFee()
+        
+      }).then(function(entryFee){
           console.log(entryFee);
           return gameInstance.registerPlayer({from: account, gas: 50000, value: entryFee});
-        });
       }).then(function(result) {
-        // Check every pet to reflect the new adoption.
+        swapInChallenge()
         console.log(result);
       }).catch(function(err) {
         console.log(err.message);
@@ -98,11 +101,11 @@ App = {
 
   submit: function(answer){
     var gameInstance;
-    
+
     App.contracts.Game.deployed().then(function(instance) {
       gameInstance = instance;
       // Call the function that will retrieve the adopters for us.
-      return gameInstance.submit.call(answer);
+      return gameInstance.submit(answer);
     }).then(function(result) {
       console.log(result);
     }).catch(function(err) {
