@@ -1,5 +1,11 @@
 @font-face {
     font-family: "San Francisco";
+    font-weight: 10;
+    src: url("../fonts/SF-Pro-Display-Thin.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "San Francisco";
     font-weight: 100;
     src: url("../fonts/SF-Pro-Display-Regular.otf") format("opentype");
 }

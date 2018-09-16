@@ -1,12 +1,23 @@
+
 .container {
     max-width: 800px;
     margin: auto;
     height: 100vh;
     background-color: rgb(71, 194, 88);
+    display: flex;
+    flex-direction: column;
   }  
 
 .content {
     margin: 60px;
+    flex: 1;
+}
+
+.bottomContent {
+    margin: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 body {
@@ -26,4 +37,28 @@ background-size: 250px;
 
 #topTextSecondLine {
     margin-top: -20px;
+}
+
+#topTextBigger {
+    margin-top: 30px;
+    font-size: 80px;
+}
+
+#textTerms {
+    font-family: "San Francisco";
+    font-weight: 10;
+    font-size: 18px;
+    max-width: 380px;
+    text-align: center;
+    margin: auto;
+    color: rgb(188, 249, 197)
+}
+
+#textTermsWhite {
+    color: white;
+}
+
+.btnBottom {
+    width: 400px;
+    height: 100px;
 }
