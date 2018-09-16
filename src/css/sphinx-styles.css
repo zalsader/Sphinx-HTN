@@ -10,11 +10,12 @@
 
 .content {
     margin: 60px;
+    margin-bottom: 0;
     flex: 1;
 }
 
 .bottomContent {
-    margin: 60px;
+    margin: 30px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,8 +92,9 @@ background-size: 250px;
     color: white;
 }
 
-#imgEther{
+.imgEther{
     width: 100px;
+    margin-bottom: 20px;
     filter: brightness(0) invert(1)
 }
 
@@ -101,4 +103,57 @@ background-size: 250px;
     font-weight: 300;
     font-size: 50px;
     display: inline-block
+}
+
+#textWin {
+    font-size: 200px;
+    line-height: 200px;
+    text-align: center;
+}
+
+#winAmountDiv {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#textAmountWon {
+    font-weight: 200;
+}
+
+#textQuestionOfTheDay {
+    font-weight: 100;
+    font-size: 45px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#textQuestion {
+    margin-top: 40px;
+    font-size: 60px;
+    line-height: 80px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.textfieldAnswer {
+    width: 100%;
+    font-size: 30px;
+    height: 30px;
+    font-family: "San Francisco";
+    font-weight: 100;
+    background-color: rgb(107, 231, 124);
+    border: 0;
+    padding: 40px;
+    color: white;
+    border:none;
+    border-radius: 40px;
+    margin-top: 25px;
+}
+
+.textfieldAnswer::placeholder {
+    color:rgb(79, 198, 95);
+  }
+
+textarea:focus, input:focus{
+    outline: none;
 }
