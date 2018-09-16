@@ -82,3 +82,23 @@ background-size: 250px;
     color: #74E384;
     transition: color 0.2s ease-in;
 }
+
+#textPrize {
+    margin-top: 100px;
+    font-family: "San Francisco";
+    font-weight: 100;
+    font-size: 40px;
+    color: white;
+}
+
+#imgEther{
+    width: 100px;
+    filter: brightness(0) invert(1)
+}
+
+#textEther {
+    margin-left: -20px;
+    font-weight: 300;
+    font-size: 50px;
+    display: inline-block
+}
