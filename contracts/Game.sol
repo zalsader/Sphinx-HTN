@@ -1,29 +1,29 @@
 pragma solidity ^0.4.17;
 
 contract Game {
-    address owner;
-
-    uint public award;
     uint public entryFee;
     string correctAnswer = "42";
+    mapping (address => uint256) public balances;
+
+    event LogSubmit(address sender, address to, uint amount);
 
     constructor() public {
-        owner = msg.sender;
-        award = 10 ether;
-        entryFee = 1 ether;
+        entryFee = 1 ether; // const?
     }
 
     function registerPlayer() public payable {
         // require the user to send you cash to add to the
         // check if player has already been registered ?
-
         require(msg.value == entryFee);
-        award += msg.value;
+
+        // ensure only paying once. TODO return something in this case
+        //require(balances[msg.sender] < entryFee);
+        balances[msg.sender] +=msg.value;
         // save sender maybe?
     }
 
     function getAward() public view returns (uint) {
-        return award;
+        return address(this).balance;
     }
 
     function getEntryFee() public view returns (uint) {
@@ -34,14 +34,12 @@ contract Game {
        return keccak256(a) == keccak256(b);
    }
 
-    function submit(string answer) public returns (bool){
-        if (compareStrings(answer, correctAnswer)) {
-          return false;
-        }
-        msg.sender.transfer(award);
-        // reset reward
-        award = 10 ether;
-        return true;
+    function submit(string answer) public {
+      // use require?
+      uint award = getAward();
+      require(compareStrings(answer, correctAnswer));
+      msg.sender.transfer(award);
+      LogSubmit(address(this), msg.sender, award);
     }
 
 }

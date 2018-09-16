@@ -97,7 +97,17 @@ App = {
   },
 
   submit: function(answer){
-
+    var gameInstance;
+    
+    App.contracts.Game.deployed().then(function(instance) {
+      gameInstance = instance;
+      // Call the function that will retrieve the adopters for us.
+      return gameInstance.submit.call(answer);
+    }).then(function(result) {
+      console.log(result);
+    }).catch(function(err) {
+      console.log(err.message);
+    });
   }
 
 };
