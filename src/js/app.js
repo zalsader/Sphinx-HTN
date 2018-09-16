@@ -107,7 +107,11 @@ App = {
       // Call the function that will retrieve the adopters for us.
       return gameInstance.submit(answer);
     }).then(function(result) {
-      console.log(result);
+      if (result) {
+        swapInVictory()
+      } else {
+        indicateError()
+      }
     }).catch(function(err) {
       console.log(err.message);
     });
