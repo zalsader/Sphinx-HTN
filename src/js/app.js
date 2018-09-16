@@ -48,7 +48,7 @@ App = {
       return gameInstance.getAward.call();
     }).then(function(award) {
       console.log(award);
-      $("#textEther").text(award.c[0]/10000)
+      $("#textEther").text(award.c[0]/10000.0)
     }).catch(function(err) {
       console.log(err.message);
     });
@@ -108,13 +108,19 @@ App = {
     App.contracts.Game.deployed().then(function(instance) {
       gameInstance = instance;
       // Call the function that will retrieve the adopters for us.
-      return gameInstance.submit(answer);
-    }).then(function(result) {
-      if (result) {
-        swapInVictory()
+      return gameInstance.checkAnswer(answer);
+    }).then(function(res) {
+      if (res) {
+        return gameInstance.submit(answer);
       } else {
-        indicateError()
+        indicateError();
+        throw new Exception(); // TODO fix
       }
+    }).then(function(result) {
+      console.log(result);
+      var amountWon = result['logs'][0]['args']['amount']['c'][0]/10000.0
+      swapInVictory();
+      $('.amount-won').text(amountWon);
     }).catch(function(err) {
       console.log(err.message);
     });

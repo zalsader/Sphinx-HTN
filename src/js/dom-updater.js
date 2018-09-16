@@ -14,7 +14,7 @@ function getVictoryTemplate() {
   return `<div class="content">
               <p class="topTextBold" id="textWin">You Won</p>
               <div id="winAmountDiv">
-                  <img src="images/ether.png" class="imgEther"> <span class="topTextBold" id="textAmountWon"> 0 Ethereum </span> <img src="images/ether.png" class="imgEther">
+                  <img src="images/ether.png" class="imgEther"> <span class="topTextBold" id="textAmountWon"> <span class="amount-won">0</span> Ethereum </span> <img src="images/ether.png" class="imgEther">
               </div>
           </div>
           <div class="bottomContent">
@@ -32,9 +32,9 @@ function getHomeTemplate() {
               <p></p>
 
           </div>
-          
+
           <div class="bottomContent">
-              <p id="textTerms">The cost of entry is 1 Ethereum. By entering you agree to our 
+              <p id="textTerms">The cost of entry is 1 Ethereum. By entering you agree to our
                 <span id="textTermsWhite">terms and services</p>
                 <button class="btnBottom"><span id="btnBottomText">Get In</span></button>
             </div>
