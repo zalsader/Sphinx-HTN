@@ -89,6 +89,10 @@ App = {
         console.log(err.message);
       });
     });
+  },
+
+  submit: function(answer){
+    
   }
 
 };
