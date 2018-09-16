@@ -38,7 +38,7 @@ App = {
   },
 
   getAward: function() {
-    var adoptionInstance;
+    var gameInstance;
 
     // Once the contract instance is deployed...
     App.contracts.Game.deployed().then(function(instance) {
@@ -46,6 +46,7 @@ App = {
       // Call the function that will retrieve the adopters for us.
       return gameInstance.getAward.call();
     }).then(function(award) {
+      console.log(award);
       $("#textEther").text(award.c[0]/10000)
     }).catch(function(err) {
       console.log(err.message);
@@ -53,7 +54,7 @@ App = {
   },
 
   getEntryFee: function() {
-    var adoptionInstance;
+    var gameInstance;
 
     // Once the contract instance is deployed...
     return App.contracts.Game.deployed().then(function(instance) {
@@ -98,11 +99,11 @@ App = {
 
   submit: function(answer){
     var gameInstance;
-    
+
     App.contracts.Game.deployed().then(function(instance) {
       gameInstance = instance;
       // Call the function that will retrieve the adopters for us.
-      return gameInstance.submit.call(answer);
+      return gameInstance.submit(answer);
     }).then(function(result) {
       console.log(result);
     }).catch(function(err) {
