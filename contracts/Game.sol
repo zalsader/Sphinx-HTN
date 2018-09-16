@@ -34,12 +34,15 @@ contract Game {
        return keccak256(a) == keccak256(b);
    }
 
-    function submit(string answer) public {
+    function submit(string answer) public returns (bool){
       // use require?
       uint award = getAward();
-      require(compareStrings(answer, correctAnswer));
+      if(!compareStrings(answer, correctAnswer)) {
+        return false;
+      }
       msg.sender.transfer(award);
       LogSubmit(address(this), msg.sender, award);
+      return true;
     }
 
 }
