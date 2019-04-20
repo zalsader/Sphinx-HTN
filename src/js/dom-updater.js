@@ -18,7 +18,7 @@ function getVictoryTemplate() {
               </div>
           </div>
           <div class="bottomContent">
-              <button class="btnBottom"><span id="btnBottomText">Home</span></button>
+              <button class="btnBottom" id="btnHome"><span id="btnBottomText">Home</span></button>
           </div>
          `
 }
@@ -34,7 +34,7 @@ function getHomeTemplate() {
           </div>
 
           <div class="bottomContent">
-              <p id="textTerms">The cost of entry is 1 Ethereum. By entering you agree to our
+              <p id="textTerms">The cost of entry is <span id="textEntryFee"></span> Ethereum. By entering you agree to our
                 <span id="textTermsWhite">terms and services</p>
                 <button class="btnBottom"><span id="btnBottomText">Get In</span></button>
             </div>

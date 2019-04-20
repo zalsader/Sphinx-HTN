@@ -29,6 +29,9 @@ App = {
       // Set the provider for our contract
       App.contracts.Game.setProvider(App.web3Provider);
       App.getAward();
+      App.getEntryFee().then(function(ef) {
+        $("#textEntryFee").text(ef.c[0]/10000.0)
+      });
     });
     return App.bindEvents();
   },
@@ -36,6 +39,7 @@ App = {
   bindEvents: function() {
     $(document).on('click', '.btn-register', App.handleRegister);
     $(document).on('click', '#btnSubmit', App.submit);
+    $(document).on('click', '#btnHome', App.home);
   },
 
   getAward: function() {
@@ -96,6 +100,15 @@ App = {
       }).catch(function(err) {
         console.log(err.message);
       });
+    });
+  },
+
+  home: function(event) {
+    if (typeof event !== "undefined") event.preventDefault();
+    swapInHome()
+    App.getAward();
+    App.getEntryFee().then(function(ef) {
+      $("#textEntryFee").text(ef.c[0]/10000.0)
     });
   },
 
